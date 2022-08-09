@@ -6,7 +6,7 @@ import Login from "./pages/login/Login"
 import Signup from "./pages/signup/Signup"
 import Project from "./pages/project/Project"
 import Create from "./pages/create/Create"
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import { useAuthContext } from './hooks/useAuthContext';
@@ -23,13 +23,13 @@ function App() {
           {user && <Sidebar />}
           <div className="container">
             <Navbar />
-            <Switch>
-              <Route exact path="/">{user ? <Dashboard /> : <Redirect to="/login" />}</Route>
-              <Route exact path="/create">{user ? <Create /> : <Redirect to="/login" />}</Route>
-              <Route exact path="/projects/:id">{user ? <Project /> : <Redirect to="/login" />}</Route>
-              <Route exact path="/login">{!user ? <Login /> : <Redirect to="/" />}</Route>
-              <Route exact path="/signup">{!user ? <Signup /> : <Redirect to="/" />}</Route>
-            </Switch>
+            <Routes>
+              <Route exact path="/" element={user ? <Dashboard /> : <Navigate to="/login" />} />
+              <Route exact path="/create" element={user ? <Create /> : <Navigate to="/login" />} />
+              <Route exact path="/projects/:id" element={user ? <Project /> : <Navigate to="/login" />} />
+              <Route exact path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
+              <Route exact path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+            </Routes>
           </div>
           {user && <OnlineUsers />}
         </BrowserRouter>
