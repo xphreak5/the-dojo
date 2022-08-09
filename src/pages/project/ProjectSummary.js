@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ArrowBack from "../../assets/arrow_back.svg"
 
 import Avatar from "../../components/Avatar"
@@ -9,14 +9,14 @@ const ProjectSummary = ({ document }) => {
 
   const { deleteDocument } = useFirestore("projects")
   const { user } = useAuthContext()
-  const history = useHistory()
+  const navigate = useNavigate()
 
   console.log(user);
   console.log(document)
 
   const handleClick = e => {
     deleteDocument(document.id)
-    history.push("/")
+    navigate("/")
   }
 
 

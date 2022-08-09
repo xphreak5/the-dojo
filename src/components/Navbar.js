@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import NavLogo from "../assets/temple.svg"
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogout } from "../hooks/useLogout"
@@ -10,10 +10,12 @@ const Navbar = () => {
   const { logout, isPending } = useLogout()
   const { user } = useAuthContext()
 
+  const navigate = useNavigate()
+
   return (
     <div className='navbar'>
       <ul>
-        <li className="logo">
+        <li className="logo" onClick={() => navigate("/")}>
           <img src={NavLogo} alt="dojo-logo" />
           <span>The Dojo</span>
         </li>

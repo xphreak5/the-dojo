@@ -13,6 +13,13 @@
   justify-content: flex-end;
 }
 .navbar .logo {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   font-weight: bold;
   color: var(--heading-color);
   letter-spacing: 1px;
@@ -21,6 +28,12 @@
   margin-right: auto;
 }
 .navbar .logo img {
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   margin-right: 10px;
   filter: invert(25%);
   width: 36px;

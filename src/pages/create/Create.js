@@ -5,7 +5,7 @@ import Select from "react-select";
 import { useCollection } from "../../hooks/useCollection"
 import { timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext"
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useFirestore } from "../../hooks/useFirestore"
 
 
@@ -34,7 +34,7 @@ const Create = () => {
   const [success, setSuccess] = useState(false)
   const [timer, setTimer] = useState(3)
 
-  const history = useHistory()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (documents) {
@@ -95,7 +95,7 @@ const Create = () => {
           i === 3 && clearInterval(interval)
         }, 1000)
       })
-      .then(() => setTimeout(() => history.push("/"), 3000))
+      .then(() => setTimeout(() => navigate("/"), 3000))
       .catch(err => setFormError(err))
   }
 

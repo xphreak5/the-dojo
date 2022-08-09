@@ -2,7 +2,7 @@ import "./Signup.css"
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useSignup } from "../../hooks/useSignup";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState("")
@@ -16,7 +16,7 @@ const Signup = () => {
 
   const refSuccess = useRef(setSuccess).current
 
-  const history = useRef(useHistory()).current
+  const navigate = useRef(useNavigate()).current
 
   useEffect(() => {
     if (success) {
@@ -24,10 +24,10 @@ const Signup = () => {
       setTimeout(() => {
         setSuccessText("")
         refSuccess(false)
-        history.push("/")
+        navigate("/")
       }, 3000)
     }
-  }, [success, refSuccess, history])
+  }, [success, refSuccess, navigate])
 
   const handleSubmit = e => { 
     e.preventDefault()
